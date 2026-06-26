@@ -41,12 +41,9 @@ body {
   transition: color 0.2s;
 }
 
-.navbar-links a:hover {
-  color: white;
-}
+.navbar-links a:hover { color: white; }
 
 .btn-giris {
-  background: transparent;
   border: 1px solid #e94560;
   color: #e94560 !important;
   padding: 8px 18px;
@@ -68,16 +65,8 @@ body {
   padding: 100px 40px;
 }
 
-.hero h1 {
-  font-size: 42px;
-  margin-bottom: 16px;
-}
-
-.hero p {
-  font-size: 18px;
-  color: #aaa;
-  margin-bottom: 32px;
-}
+.hero h1 { font-size: 42px; margin-bottom: 16px; }
+.hero p { font-size: 18px; color: #aaa; margin-bottom: 32px; }
 
 .btn-kesfet {
   background: #e94560;
@@ -90,26 +79,102 @@ body {
   transition: background 0.2s;
 }
 
-.btn-kesfet:hover {
-  background: #c73652;
+.btn-kesfet:hover { background: #c73652; }
+
+/* İSTATİSTİKLER */
+.istatistikler {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.istatistik-kart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ist-sayi {
+  font-size: 28px;
+  font-weight: bold;
+  color: #e94560;
+}
+
+.ist-etiket {
+  font-size: 14px;
+  color: #888;
+}
+
+/* KATEGORİLER */
+.kategoriler-bolum {
+  padding: 48px 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kategoriler-bolum h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #1a1a2e;
+}
+
+.kategori-listesi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.kategori-btn {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  color: #555;
+}
+
+.kategori-btn:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+.kategori-btn.aktif {
+  background: #e94560;
+  border-color: #e94560;
+  color: white;
 }
 
 /* KİTAPLAR */
 .kitaplar-bolum {
-  padding: 60px 40px;
+  padding: 40px 40px 60px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .kitaplar-bolum h2 {
-  font-size: 28px;
-  margin-bottom: 32px;
+  font-size: 26px;
+  margin-bottom: 28px;
   color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kitap-sayisi {
+  font-size: 14px;
+  color: #888;
+  font-weight: normal;
 }
 
 .kitap-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   gap: 24px;
 }
 
@@ -119,35 +184,40 @@ body {
   padding: 24px;
   text-align: center;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .kitap-kart:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
-.kitap-resim {
-  font-size: 64px;
-  margin-bottom: 16px;
+.kitap-resim { font-size: 64px; margin-bottom: 12px; }
+
+.kitap-kategori-etiket {
+  background: #f0f0f0;
+  color: #666;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 .kitap-kart h3 {
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 15px;
+  margin-bottom: 6px;
   color: #1a1a2e;
 }
 
-.yazar {
-  color: #888;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
+.yazar { color: #888; font-size: 13px; margin-bottom: 12px; }
 
 .fiyat {
   font-size: 20px;
   font-weight: bold;
   color: #e94560;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .btn-sepet {
@@ -162,16 +232,32 @@ body {
   transition: background 0.2s;
 }
 
-.btn-sepet:hover {
-  background: #e94560;
+.btn-sepet:hover { background: #e94560; }
+
+/* KAMPANYA */
+.kampanya {
+  background: linear-gradient(135deg, #e94560, #c73652);
+  padding: 60px 40px;
+  text-align: center;
+  color: white;
 }
 
-.yukleniyor, .bos-mesaj {
-  text-align: center;
-  color: #888;
-  font-size: 18px;
-  padding: 40px;
+.kampanya h2 { font-size: 32px; margin-bottom: 12px; }
+.kampanya p { font-size: 18px; margin-bottom: 28px; opacity: 0.9; }
+
+.btn-kampanya {
+  background: white;
+  color: #e94560;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
+
+.btn-kampanya:hover { transform: scale(1.04); }
 
 /* FOOTER */
 .footer {
@@ -179,5 +265,4 @@ body {
   color: #888;
   text-align: center;
   padding: 24px;
-  margin-top: 60px;
 }

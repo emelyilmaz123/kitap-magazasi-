@@ -1,56 +1,130 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
+const ornekKitaplar = [
+  { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
+  { id: 2, baslik: 'Simyacı', yazar: 'Paulo Coelho', fiyat: 75, kategori: 'Roman' },
+  { id: 3, baslik: 'Dune', yazar: 'Frank Herbert', fiyat: 120, kategori: 'Bilim Kurgu' },
+  { id: 4, baslik: 'Sapiens', yazar: 'Yuval Noah Harari', fiyat: 110, kategori: 'Tarih' },
+  { id: 5, baslik: 'Küçük Prens', yazar: 'Antoine de Saint-Exupéry', fiyat: 55, kategori: 'Klasik' },
+  { id: 6, baslik: 'Harry Potter', yazar: 'J.K. Rowling', fiyat: 95, kategori: 'Fantastik' },
+  { id: 7, baslik: '1984', yazar: 'George Orwell', fiyat: 80, kategori: 'Distopya' },
+  { id: 8, baslik: 'Sefiller', yazar: 'Victor Hugo', fiyat: 130, kategori: 'Klasik' },
+];
+
+const kategoriler = [
+  { ad: 'Roman', emoji: '📖' },
+  { ad: 'Bilim Kurgu', emoji: '🚀' },
+  { ad: 'Tarih', emoji: '🏛️' },
+  { ad: 'Klasik', emoji: '🎭' },
+  { ad: 'Fantastik', emoji: '🧙' },
+  { ad: 'Distopya', emoji: '🌑' },
+];
+
 function App() {
-  const [kitaplar, setKitaplar] = useState([]);
-  const [yukleniyor, setYukleniyor] = useState(true);
+  const [kitaplar, setKitaplar] = useState(ornekKitaplar);
+  const [secilenKategori, setSecilenKategori] = useState('Tümü');
 
   useEffect(() => {
     fetch('http://localhost:5000/api/kitaplar')
       .then(res => res.json())
-      .then(data => {
-        setKitaplar(data);
-        setYukleniyor(false);
-      })
-      .catch(() => setYukleniyor(false));
+      .then(data => { if (data.length > 0) setKitaplar(data); })
+      .catch(() => {});
   }, []);
+
+  const filtreliKitaplar = secilenKategori === 'Tümü'
+    ? kitaplar
+    : kitaplar.filter(k => k.kategori === secilenKategori);
 
   return (
     <div className="app">
+      {/* NAVBAR */}
       <header className="navbar">
         <div className="navbar-logo">📚 Kitap Mağazası</div>
         <nav className="navbar-links">
           <a href="#kitaplar">Kitaplar</a>
+          <a href="#kategoriler">Kategoriler</a>
           <a href="#" className="btn-giris">Giriş Yap</a>
           <a href="#" className="btn-kayit">Kayıt Ol</a>
         </nav>
       </header>
 
+      {/* HERO */}
       <section className="hero">
         <h1>Kitap Dünyasına Hoş Geldiniz</h1>
         <p>Binlerce kitap, uygun fiyatlar, hızlı teslimat</p>
         <a href="#kitaplar" className="btn-kesfet">Kitapları Keşfet</a>
       </section>
 
+      {/* İSTATİSTİKLER */}
+      <section className="istatistikler">
+        <div className="istatistik-kart">
+          <span className="ist-sayi">10.000+</span>
+          <span className="ist-etiket">Kitap Çeşidi</span>
+        </div>
+        <div className="istatistik-kart">
+          <span className="ist-sayi">50.000+</span>
+          <span className="ist-etiket">Mutlu Müşteri</span>
+        </div>
+        <div className="istatistik-kart">
+          <span className="ist-sayi">500+</span>
+          <span className="ist-etiket">Yazar</span>
+        </div>
+        <div className="istatistik-kart">
+          <span className="ist-sayi">24 Saat</span>
+          <span className="ist-etiket">Hızlı Teslimat</span>
+        </div>
+      </section>
+
+      {/* KATEGORİLER */}
+      <section className="kategoriler-bolum" id="kategoriler">
+        <h2>Kategoriler</h2>
+        <div className="kategori-listesi">
+          <button
+            className={`kategori-btn ${secilenKategori === 'Tümü' ? 'aktif' : ''}`}
+            onClick={() => setSecilenKategori('Tümü')}
+          >
+            📚 Tümü
+          </button>
+          {kategoriler.map(k => (
+            <button
+              key={k.ad}
+              className={`kategori-btn ${secilenKategori === k.ad ? 'aktif' : ''}`}
+              onClick={() => setSecilenKategori(k.ad)}
+            >
+              {k.emoji} {k.ad}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* KİTAPLAR */}
       <section className="kitaplar-bolum" id="kitaplar">
-        <h2>Tüm Kitaplar</h2>
-        {yukleniyor ? (
-          <p className="yukleniyor">Yükleniyor...</p>
-        ) : kitaplar.length === 0 ? (
-          <p className="bos-mesaj">Henüz kitap eklenmemiş.</p>
-        ) : (
-          <div className="kitap-grid">
-            {kitaplar.map(kitap => (
-              <div key={kitap.id} className="kitap-kart">
-                <div className="kitap-resim">📖</div>
-                <h3>{kitap.baslik}</h3>
-                <p className="yazar">{kitap.yazar}</p>
-                <p className="fiyat">{kitap.fiyat} ₺</p>
-                <button className="btn-sepet">Sepete Ekle</button>
-              </div>
-            ))}
-          </div>
-        )}
+        <h2>
+          {secilenKategori === 'Tümü' ? 'Tüm Kitaplar' : secilenKategori}
+          <span className="kitap-sayisi">{filtreliKitaplar.length} kitap</span>
+        </h2>
+        <div className="kitap-grid">
+          {filtreliKitaplar.map(kitap => (
+            <div key={kitap.id} className="kitap-kart">
+              <div className="kitap-resim">📖</div>
+              <span className="kitap-kategori-etiket">{kitap.kategori}</span>
+              <h3>{kitap.baslik}</h3>
+              <p className="yazar">{kitap.yazar}</p>
+              <p className="fiyat">{kitap.fiyat} ₺</p>
+              <button className="btn-sepet">🛒 Sepete Ekle</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* KAMPANYA */}
+      <section className="kampanya">
+        <div className="kampanya-icerik">
+          <h2>Bu Haftanın Fırsatı!</h2>
+          <p>Klasik eserlerde %30 indirim — kaçırma!</p>
+          <button className="btn-kampanya">Fırsatları Gör</button>
+        </div>
       </section>
 
       <footer className="footer">
