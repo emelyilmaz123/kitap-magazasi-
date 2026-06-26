@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Kullanici {
+  id        Int      @id @default(autoincrement())
+  ad        String
+  email     String   @unique
+  sifre     String
+  rol       Rol      @default(MUSTERI)
+  createdAt DateTime @default(now())
+  siparisler Siparis[]
+}
+
+model Kategori {
+  id     Int     @id @default(autoincrement())
+  ad     String  @unique
+  kitaplar Kitap[]
+}
+
+model Kitap {
+  id          Int      @id @default(autoincrement())
+  baslik      String
+  yazar       String
+  fiyat       Float
+  stok        Int      @default(0)
+  aciklama    String?
+  resim       String?
+  kategoriId  Int
+  kategori    Kategori @relation(fields: [kategoriId], references: [id])
+  createdAt   DateTime @default(now())
+  sepetilemler SepetiKitap[]
+  siparisKalemleri SiparisKalemi[]
+}
+
+model Sepet {
+  id          Int      @id @default(autoincrement())
+  kullaniciId Int      @unique
+  kitaplar    SepetiKitap[]
+}
+
+model SepetiKitap {
+  id       Int   @id @default(autoincrement())
+  sepetId  Int
+  kitapId  Int
+  adet     Int   @default(1)
+  sepet    Sepet @relation(fields: [sepetId], references: [id])
+  kitap    Kitap @relation(fields: [kitapId], references: [id])
+}
+
+model Siparis {
+  id          Int      @id @default(autoincrement())
+  kullaniciId Int
+  kullanici   Kullanici @relation(fields: [kullaniciId], references: [id])
+  durum       SiparisDurum @default(BEKLIYOR)
+  toplam      Float
+  createdAt   DateTime @default(now())
+  kalemler    SiparisKalemi[]
+}
+
+model SiparisKalemi {
+  id        Int     @id @default(autoincrement())
+  siparisId Int
+  kitapId   Int
+  adet      Int
+  fiyat     Float
+  siparis   Siparis @relation(fields: [siparisId], references: [id])
+  kitap     Kitap   @relation(fields: [kitapId], references: [id])
+}
+
+enum Rol {
+  ADMIN
+  MUSTERI
+}
+
+enum SiparisDurum {
+  BEKLIYOR
+  HAZIRLANIYOR
+  KARGOLANDI
+  TESLIM_EDILDI
+  IPTAL
+}
