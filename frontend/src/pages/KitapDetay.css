@@ -1,0 +1,179 @@
+.detay-yuklen,
+.detay-hata {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #666;
+  gap: 12px;
+}
+
+.detay-sayfa {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.detay-icerik {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.btn-geri {
+  background: none;
+  border: none;
+  color: #0f3460;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.btn-geri:hover {
+  text-decoration: underline;
+}
+
+.detay-kart {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  gap: 48px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.detay-sol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.detay-kapak {
+  width: 200px;
+  height: 280px;
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.detay-kategori {
+  background: #e94560;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.detay-sag {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detay-sag h1 {
+  font-size: 32px;
+  color: #1a1a2e;
+  line-height: 1.2;
+}
+
+.detay-yazar {
+  font-size: 18px;
+  color: #555;
+}
+
+.detay-aciklama {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+  border-left: 3px solid #e94560;
+  padding-left: 16px;
+}
+
+.detay-bilgiler {
+  display: flex;
+  gap: 12px;
+}
+
+.stok-etiket {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.stok-etiket.var {
+  background: #e6f9f0;
+  color: #1a7a4a;
+}
+
+.stok-etiket.yok {
+  background: #fff0f0;
+  color: #cc0000;
+}
+
+.detay-fiyat {
+  font-size: 36px;
+  font-weight: bold;
+  color: #e94560;
+}
+
+.sepet-mesaj {
+  background: #e6f9f0;
+  color: #1a7a4a;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-sepete-ekle {
+  background: linear-gradient(135deg, #e94560, #c73652);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  align-self: flex-start;
+}
+
+.btn-sepete-ekle:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-sepete-ekle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .detay-kart {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .detay-sag h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .btn-sepete-ekle {
+    width: 100%;
+    text-align: center;
+  }
+}

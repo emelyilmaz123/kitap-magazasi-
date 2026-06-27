@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Giris from './pages/Giris';
 import Kayit from './pages/Kayit';
+import KitapDetay from './pages/KitapDetay';
 
 const ornekKitaplar = [
   { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
@@ -129,9 +130,9 @@ function AnaSayfa() {
         </h2>
         <div className="kitap-grid">
           {filtreliKitaplar.map(kitap => (
-            <div key={kitap.id} className="kitap-kart">
+            <div key={kitap.id} className="kitap-kart" onClick={() => navigate(`/kitap/${kitap.id}`)} style={{ cursor: 'pointer' }}>
               <div className="kitap-resim">📖</div>
-              <span className="kitap-kategori-etiket">{kitap.kategori}</span>
+              <span className="kitap-kategori-etiket">{kitap.kategori?.ad || kitap.kategori}</span>
               <h3>{kitap.baslik}</h3>
               <p className="yazar">{kitap.yazar}</p>
               <p className="fiyat">{kitap.fiyat} ₺</p>
@@ -164,6 +165,7 @@ function App() {
         <Route path="/" element={<AnaSayfa />} />
         <Route path="/giris" element={<Giris />} />
         <Route path="/kayit" element={<Kayit />} />
+        <Route path="/kitap/:id" element={<KitapDetay />} />
       </Routes>
     </BrowserRouter>
   );
