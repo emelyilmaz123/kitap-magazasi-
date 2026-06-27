@@ -57,6 +57,16 @@ body {
   border-radius: 6px;
 }
 
+.navbar-sepet {
+  color: #ccc;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.navbar-sepet:hover {
+  color: white;
+}
+
 .navbar-kullanici {
   color: #ccc;
   font-size: 14px;

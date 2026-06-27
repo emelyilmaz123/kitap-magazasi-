@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-do
 import Giris from './pages/Giris';
 import Kayit from './pages/Kayit';
 import KitapDetay from './pages/KitapDetay';
+import Sepet from './pages/Sepet';
 
 const ornekKitaplar = [
   { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
@@ -61,6 +62,7 @@ function AnaSayfa() {
           <a href="#kategoriler">Kategoriler</a>
           {kullanici ? (
             <>
+              <Link to="/sepet" className="navbar-sepet">🛒 Sepet</Link>
               <span className="navbar-kullanici">👤 {kullanici.ad}</span>
               <button onClick={cikisYap} className="btn-cikis">Çıkış</button>
             </>
@@ -166,6 +168,7 @@ function App() {
         <Route path="/giris" element={<Giris />} />
         <Route path="/kayit" element={<Kayit />} />
         <Route path="/kitap/:id" element={<KitapDetay />} />
+        <Route path="/sepet" element={<Sepet />} />
       </Routes>
     </BrowserRouter>
   );
