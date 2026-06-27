@@ -6,6 +6,7 @@ function Sepet() {
   const navigate = useNavigate();
   const [sepet, setSepet] = useState([]);
   const [yukleniyor, setYukleniyor] = useState(true);
+  const [siparisYukleniyor, setSiparisYukleniyor] = useState(false);
   const kullanici = JSON.parse(localStorage.getItem('kullanici') || 'null');
   const token = localStorage.getItem('token');
 
@@ -42,6 +43,22 @@ function Sepet() {
   };
 
   const toplamFiyat = sepet.reduce((toplam, k) => toplam + k.kitap.fiyat * k.adet, 0);
+
+  const siparisVer = async () => {
+    setSiparisYukleniyor(true);
+    try {
+      const res = await fetch('http://localhost:5000/api/siparisler', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+      });
+      if (res.ok) {
+        navigate('/siparislerim');
+      }
+    } catch {}
+    finally {
+      setSiparisYukleniyor(false);
+    }
+  };
 
   if (yukleniyor) return <div className="sepet-yuklen">Yükleniyor...</div>;
 
@@ -102,7 +119,9 @@ function Sepet() {
                 <span>Toplam</span>
                 <span>{toplamFiyat} ₺</span>
               </div>
-              <button className="btn-satin-al">Satın Al</button>
+              <button className="btn-satin-al" onClick={siparisVer} disabled={siparisYukleniyor}>
+                {siparisYukleniyor ? 'Sipariş veriliyor...' : 'Satın Al'}
+              </button>
               <Link to="/" className="btn-alisverise-devam">← Alışverişe Devam Et</Link>
             </div>
           </div>

@@ -1,0 +1,178 @@
+.siparis-yuklen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.siparis-sayfa {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.siparis-icerik {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.siparis-icerik h1 {
+  font-size: 28px;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+}
+
+.siparis-bos {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 16px;
+}
+
+.siparis-bos-ikon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.siparis-bos p {
+  font-size: 20px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.btn-alisverise-don {
+  background: #e94560;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.siparis-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.siparis-kart {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.siparis-baslik {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.siparis-baslik:hover {
+  background: #fafafa;
+}
+
+.siparis-sol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.siparis-no {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.siparis-tarih {
+  font-size: 13px;
+  color: #888;
+}
+
+.siparis-sag {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.siparis-durum {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.durum-hazirlaniyor {
+  background: #fff8e6;
+  color: #b07800;
+}
+
+.durum-kargoda {
+  background: #e6f0ff;
+  color: #1a52b0;
+}
+
+.durum-teslim {
+  background: #e6f9f0;
+  color: #1a7a4a;
+}
+
+.siparis-toplam {
+  font-size: 17px;
+  font-weight: 700;
+  color: #e94560;
+}
+
+.siparis-ok {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.siparis-detay {
+  border-top: 1px solid #eee;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.siparis-kalem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.kalem-kitap-adi {
+  flex: 1;
+  font-weight: 500;
+  color: #333;
+}
+
+.kalem-bilgi {
+  color: #888;
+  margin: 0 16px;
+}
+
+.kalem-toplam {
+  font-weight: 600;
+  color: #333;
+}
+
+.siparis-detay-toplam {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  margin-top: 4px;
+}

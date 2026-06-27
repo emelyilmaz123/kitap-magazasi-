@@ -6,6 +6,7 @@ import Kayit from './pages/Kayit';
 import KitapDetay from './pages/KitapDetay';
 import Sepet from './pages/Sepet';
 import Admin from './pages/Admin';
+import Siparislerim from './pages/Siparislerim';
 
 const ornekKitaplar = [
   { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
@@ -64,6 +65,7 @@ function AnaSayfa() {
           {kullanici ? (
             <>
               <Link to="/sepet" className="navbar-sepet">🛒 Sepet</Link>
+              <Link to="/siparislerim" className="navbar-sepet">📦 Siparişlerim</Link>
               {kullanici.rol === 'ADMIN' && <Link to="/admin" className="navbar-sepet">⚙️ Admin</Link>}
               <span className="navbar-kullanici">👤 {kullanici.ad}</span>
               <button onClick={cikisYap} className="btn-cikis">Çıkış</button>
@@ -172,6 +174,7 @@ function App() {
         <Route path="/kitap/:id" element={<KitapDetay />} />
         <Route path="/sepet" element={<Sepet />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/siparislerim" element={<Siparislerim />} />
       </Routes>
     </BrowserRouter>
   );
