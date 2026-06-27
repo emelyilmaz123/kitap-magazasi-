@@ -137,7 +137,9 @@ function AnaSayfa() {
         <div className="kitap-grid">
           {filtreliKitaplar.map(kitap => (
             <div key={kitap.id} className="kitap-kart" onClick={() => navigate(`/kitap/${kitap.id}`)} style={{ cursor: 'pointer' }}>
-              <div className="kitap-resim">📖</div>
+              <div className="kitap-resim">
+                {kitap.resim ? <img src={kitap.resim} alt={kitap.baslik} /> : '📖'}
+              </div>
               <span className="kitap-kategori-etiket">{kitap.kategori?.ad || kitap.kategori}</span>
               <h3>{kitap.baslik}</h3>
               <p className="yazar">{kitap.yazar}</p>

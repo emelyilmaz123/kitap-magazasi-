@@ -79,7 +79,9 @@ function KitapDetay() {
 
         <div className="detay-kart">
           <div className="detay-sol">
-            <div className="detay-kapak">📖</div>
+            <div className="detay-kapak">
+              {kitap.resim ? <img src={kitap.resim} alt={kitap.baslik} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }} /> : '📖'}
+            </div>
             <span className="detay-kategori">{kitap.kategori?.ad || kitap.kategori}</span>
           </div>
 
