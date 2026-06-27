@@ -57,6 +57,27 @@ body {
   border-radius: 6px;
 }
 
+.navbar-kullanici {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.btn-cikis {
+  background: transparent;
+  border: 1px solid #e94560;
+  color: #e94560;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn-cikis:hover {
+  background: #e94560;
+  color: white;
+}
+
 /* HERO */
 .hero {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);

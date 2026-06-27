@@ -1,0 +1,116 @@
+.auth-sayfa {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-kart {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.auth-logo {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.auth-kart h2 {
+  font-size: 28px;
+  color: #1a1a2e;
+  margin: 0 0 6px 0;
+}
+
+.auth-alt-baslik {
+  color: #888;
+  font-size: 14px;
+  margin: 0 0 28px 0;
+}
+
+.auth-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-grup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-grup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-grup input {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-grup input:focus {
+  border-color: #0f3460;
+}
+
+.hata-mesaji {
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  color: #cc0000;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.btn-auth {
+  background: linear-gradient(135deg, #0f3460, #533483);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.btn-auth:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-auth:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-link {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #666;
+}
+
+.auth-link a {
+  color: #0f3460;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}

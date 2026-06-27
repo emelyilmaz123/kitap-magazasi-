@@ -1,5 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import Giris from './pages/Giris';
+import Kayit from './pages/Kayit';
 
 const ornekKitaplar = [
   { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
@@ -21,16 +24,27 @@ const kategoriler = [
   { ad: 'Distopya', emoji: '🌑' },
 ];
 
-function App() {
+function AnaSayfa() {
+  const navigate = useNavigate();
   const [kitaplar, setKitaplar] = useState(ornekKitaplar);
   const [secilenKategori, setSecilenKategori] = useState('Tümü');
+  const [kullanici, setKullanici] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:5000/api/kitaplar')
       .then(res => res.json())
       .then(data => { if (data.length > 0) setKitaplar(data); })
       .catch(() => {});
+
+    const k = localStorage.getItem('kullanici');
+    if (k) setKullanici(JSON.parse(k));
   }, []);
+
+  const cikisYap = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('kullanici');
+    setKullanici(null);
+  };
 
   const filtreliKitaplar = secilenKategori === 'Tümü'
     ? kitaplar
@@ -44,8 +58,17 @@ function App() {
         <nav className="navbar-links">
           <a href="#kitaplar">Kitaplar</a>
           <a href="#kategoriler">Kategoriler</a>
-          <a href="#" className="btn-giris">Giriş Yap</a>
-          <a href="#" className="btn-kayit">Kayıt Ol</a>
+          {kullanici ? (
+            <>
+              <span className="navbar-kullanici">👤 {kullanici.ad}</span>
+              <button onClick={cikisYap} className="btn-cikis">Çıkış</button>
+            </>
+          ) : (
+            <>
+              <Link to="/giris" className="btn-giris">Giriş Yap</Link>
+              <Link to="/kayit" className="btn-kayit">Kayıt Ol</Link>
+            </>
+          )}
         </nav>
       </header>
 
@@ -131,6 +154,18 @@ function App() {
         <p>© 2024 Kitap Mağazası. Tüm hakları saklıdır.</p>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AnaSayfa />} />
+        <Route path="/giris" element={<Giris />} />
+        <Route path="/kayit" element={<Kayit />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
