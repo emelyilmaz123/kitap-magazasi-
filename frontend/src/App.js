@@ -7,6 +7,7 @@ import KitapDetay from './pages/KitapDetay';
 import Sepet from './pages/Sepet';
 import Admin from './pages/Admin';
 import Siparislerim from './pages/Siparislerim';
+import Footer from './components/Footer';
 
 const ornekKitaplar = [
   { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
@@ -159,9 +160,7 @@ function AnaSayfa() {
         </div>
       </section>
 
-      <footer className="footer">
-        <p>© 2024 Kitap Mağazası. Tüm hakları saklıdır.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

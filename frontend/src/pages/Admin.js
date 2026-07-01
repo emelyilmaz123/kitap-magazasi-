@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Admin.css';
+import Footer from '../components/Footer';
 
 function Admin() {
   const navigate = useNavigate();
@@ -258,6 +259,7 @@ function Admin() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

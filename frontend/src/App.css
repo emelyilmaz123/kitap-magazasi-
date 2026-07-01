@@ -306,10 +306,3 @@ body {
 
 .btn-kampanya:hover { transform: scale(1.04); }
 
-/* FOOTER */
-.footer {
-  background: #1a1a2e;
-  color: #888;
-  text-align: center;
-  padding: 24px;
-}

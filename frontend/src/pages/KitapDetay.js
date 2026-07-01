@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import './KitapDetay.css';
+import Footer from '../components/Footer';
 
 function KitapDetay() {
   const { id } = useParams();
@@ -115,6 +116,7 @@ function KitapDetay() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

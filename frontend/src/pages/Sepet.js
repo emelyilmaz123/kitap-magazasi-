@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Sepet.css';
+import Footer from '../components/Footer';
 
 function Sepet() {
   const navigate = useNavigate();
@@ -127,6 +128,7 @@ function Sepet() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
