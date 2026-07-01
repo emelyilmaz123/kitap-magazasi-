@@ -90,14 +90,32 @@ body {
 
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  position: relative;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c8/Ataturk2_-_cropped_--_Atat%C3%BCrk%27s_eyes.jpg');
+  background-size: cover;
+  background-position: center center;
   color: white;
   text-align: center;
-  padding: 100px 40px;
+  padding: 120px 40px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,26,46,0.82) 0%, rgba(22,33,62,0.78) 100%);
+}
+
+.hero h1,
+.hero p,
+.hero a {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 { font-size: 42px; margin-bottom: 16px; }
-.hero p { font-size: 18px; color: #aaa; margin-bottom: 32px; }
+.hero p { font-size: 18px; color: #ddd; margin-bottom: 32px; }
 
 .btn-kesfet {
   background: #e94560;
@@ -111,6 +129,35 @@ body {
 }
 
 .btn-kesfet:hover { background: #c73652; }
+
+.hero-alinti {
+  position: relative;
+  z-index: 1;
+  margin-top: 64px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 4px solid #e94560;
+  padding: 14px 24px;
+  text-align: left;
+}
+
+.hero-alinti p {
+  font-size: 17px;
+  color: #fff;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: 10px !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.hero-alinti span {
+  font-size: 14px;
+  color: #e94560;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
 
 /* İSTATİSTİKLER */
 .istatistikler {

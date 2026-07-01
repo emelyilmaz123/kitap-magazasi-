@@ -73,6 +73,10 @@ function AnaSayfa() {
         <h1>Kitap Dünyasına Hoş Geldiniz</h1>
         <p>Binlerce kitap, uygun fiyatlar, hızlı teslimat</p>
         <a href="#kitaplar" className="btn-kesfet">Kitapları Keşfet</a>
+        <div className="hero-alinti">
+          <p>"Çocukluğumda elime geçen iki kuruştan birini kitaba verirdim. Eğer böyle yapmasaydım, bu yaptıklarımın hiçbirini yapamazdım."</p>
+          <span>— Mustafa Kemal Atatürk</span>
+        </div>
       </section>
 
       {/* İSTATİSTİKLER */}
