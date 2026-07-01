@@ -1,0 +1,203 @@
+.yorumlar-sayfa {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+}
+
+.yorumlar-icerik {
+  flex: 1;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.yorumlar-icerik h1 {
+  font-size: 32px;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.yorumlar-aciklama {
+  color: #888;
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+/* FORM */
+.yorum-form-kart {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 40px;
+}
+
+.yorum-form-kart h2 {
+  font-size: 20px;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+}
+
+.yorum-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-grup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-grup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-grup input,
+.form-grup textarea {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border 0.2s;
+  outline: none;
+}
+
+.form-grup input:focus,
+.form-grup textarea:focus {
+  border-color: #e94560;
+}
+
+.yorum-hata {
+  background: #ffeaea;
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.yorum-basari {
+  background: #eafaf1;
+  color: #27ae60;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.btn-gonder {
+  background: #e94560;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-gonder:hover { background: #c73652; }
+.btn-gonder:disabled { background: #ccc; cursor: not-allowed; }
+
+/* LİSTE */
+.yorumlar-liste-bolum h2 {
+  font-size: 22px;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yorum-sayisi {
+  font-size: 14px;
+  color: #888;
+  font-weight: normal;
+}
+
+.yorum-bos {
+  background: white;
+  border-radius: 12px;
+  padding: 48px;
+  text-align: center;
+  color: #888;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* TABLO */
+.yorumlar-tablo {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.yorumlar-tablo thead tr {
+  background: #1a1a2e;
+  color: white;
+}
+
+.yorumlar-tablo th {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.yorum-satir {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+}
+
+.yorum-satir:hover { background: #fafafa; }
+
+.yorumlar-tablo td {
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #444;
+}
+
+.yorum-kitap-adi {
+  font-weight: 600;
+  color: #1a1a2e !important;
+}
+
+.yorum-yazar { color: #666 !important; }
+.yorum-tarih { color: #999 !important; font-size: 13px !important; }
+
+.btn-yorumu-oku {
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.btn-yorumu-oku:hover { background: #e94560; }
+
+.yorum-detay-satir td {
+  padding: 0 !important;
+}
+
+.yorum-detay-icerik {
+  background: #f9f9fb;
+  padding: 16px 24px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444;
+  border-left: 4px solid #e94560;
+}

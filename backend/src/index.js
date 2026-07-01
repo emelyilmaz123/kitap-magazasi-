@@ -13,6 +13,7 @@ app.use('/api/kitaplar', require('./routes/kitap.routes'));
 app.use('/api/kategoriler', require('./routes/kategori.routes'));
 app.use('/api/sepet', require('./routes/sepet.routes'));
 app.use('/api/siparisler', require('./routes/siparis.routes'));
+app.use('/api/yorumlar', require('./routes/yorum.routes'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

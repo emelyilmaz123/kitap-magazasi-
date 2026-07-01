@@ -74,6 +74,14 @@ model SiparisKalemi {
   kitap     Kitap   @relation(fields: [kitapId], references: [id])
 }
 
+model Yorum {
+  id        Int      @id @default(autoincrement())
+  kitapAdi  String
+  yorum     String
+  yazarAdi  String   @default("Anonim")
+  createdAt DateTime @default(now())
+}
+
 enum Rol {
   ADMIN
   MUSTERI

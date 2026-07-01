@@ -7,6 +7,7 @@ import KitapDetay from './pages/KitapDetay';
 import Sepet from './pages/Sepet';
 import Admin from './pages/Admin';
 import Siparislerim from './pages/Siparislerim';
+import Yorumlar from './pages/Yorumlar';
 import Footer from './components/Footer';
 
 function AnaSayfa() {
@@ -49,6 +50,7 @@ function AnaSayfa() {
         <nav className="navbar-links">
           <a href="#kitaplar">Kitaplar</a>
           <a href="#kategoriler">Kategoriler</a>
+          <Link to="/yorumlar">💬 Yorumlar</Link>
           {kullanici ? (
             <>
               <Link to="/sepet" className="navbar-sepet">🛒 Sepet</Link>
@@ -162,6 +164,7 @@ function App() {
         <Route path="/sepet" element={<Sepet />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/siparislerim" element={<Siparislerim />} />
+        <Route path="/yorumlar" element={<Yorumlar />} />
       </Routes>
     </BrowserRouter>
   );
