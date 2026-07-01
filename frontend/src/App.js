@@ -9,36 +9,22 @@ import Admin from './pages/Admin';
 import Siparislerim from './pages/Siparislerim';
 import Footer from './components/Footer';
 
-const ornekKitaplar = [
-  { id: 1, baslik: 'Suç ve Ceza', yazar: 'Dostoyevski', fiyat: 89, kategori: 'Roman' },
-  { id: 2, baslik: 'Simyacı', yazar: 'Paulo Coelho', fiyat: 75, kategori: 'Roman' },
-  { id: 3, baslik: 'Dune', yazar: 'Frank Herbert', fiyat: 120, kategori: 'Bilim Kurgu' },
-  { id: 4, baslik: 'Sapiens', yazar: 'Yuval Noah Harari', fiyat: 110, kategori: 'Tarih' },
-  { id: 5, baslik: 'Küçük Prens', yazar: 'Antoine de Saint-Exupéry', fiyat: 55, kategori: 'Klasik' },
-  { id: 6, baslik: 'Harry Potter', yazar: 'J.K. Rowling', fiyat: 95, kategori: 'Fantastik' },
-  { id: 7, baslik: '1984', yazar: 'George Orwell', fiyat: 80, kategori: 'Distopya' },
-  { id: 8, baslik: 'Sefiller', yazar: 'Victor Hugo', fiyat: 130, kategori: 'Klasik' },
-];
-
-const kategoriler = [
-  { ad: 'Roman', emoji: '📖' },
-  { ad: 'Bilim Kurgu', emoji: '🚀' },
-  { ad: 'Tarih', emoji: '🏛️' },
-  { ad: 'Klasik', emoji: '🎭' },
-  { ad: 'Fantastik', emoji: '🧙' },
-  { ad: 'Distopya', emoji: '🌑' },
-];
-
 function AnaSayfa() {
   const navigate = useNavigate();
-  const [kitaplar, setKitaplar] = useState(ornekKitaplar);
+  const [kitaplar, setKitaplar] = useState([]);
+  const [kategoriler, setKategoriler] = useState([]);
   const [secilenKategori, setSecilenKategori] = useState('Tümü');
   const [kullanici, setKullanici] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:5000/api/kitaplar')
       .then(res => res.json())
-      .then(data => { if (data.length > 0) setKitaplar(data); })
+      .then(data => setKitaplar(data))
+      .catch(() => {});
+
+    fetch('http://localhost:5000/api/kategoriler')
+      .then(res => res.json())
+      .then(data => setKategoriler(data))
       .catch(() => {});
 
     const k = localStorage.getItem('kullanici');
@@ -53,7 +39,7 @@ function AnaSayfa() {
 
   const filtreliKitaplar = secilenKategori === 'Tümü'
     ? kitaplar
-    : kitaplar.filter(k => k.kategori === secilenKategori);
+    : kitaplar.filter(k => (k.kategori?.ad || k.kategori) === secilenKategori);
 
   return (
     <div className="app">
@@ -119,11 +105,11 @@ function AnaSayfa() {
           </button>
           {kategoriler.map(k => (
             <button
-              key={k.ad}
+              key={k.id}
               className={`kategori-btn ${secilenKategori === k.ad ? 'aktif' : ''}`}
               onClick={() => setSecilenKategori(k.ad)}
             >
-              {k.emoji} {k.ad}
+              📚 {k.ad}
             </button>
           ))}
         </div>
@@ -132,7 +118,7 @@ function AnaSayfa() {
       {/* KİTAPLAR */}
       <section className="kitaplar-bolum" id="kitaplar">
         <h2>
-          {secilenKategori === 'Tümü' ? 'Tüm Kitaplar' : secilenKategori}
+          {secilenKategori === 'Tümü' ? 'Tüm Kitaplar' : `${secilenKategori} Kitapları`}
           <span className="kitap-sayisi">{filtreliKitaplar.length} kitap</span>
         </h2>
         <div className="kitap-grid">
